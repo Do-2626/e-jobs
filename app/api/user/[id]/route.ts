@@ -17,6 +17,7 @@ export const GET = async (
     if (id !== "self") {
       if (
         user.role !== "hr" &&
+        user.role !== "user" &&
         user.role !== "admin" &&
         user.role !== "super-admin" &&
         String(user._id) !== params.id
