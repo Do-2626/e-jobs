@@ -19,6 +19,7 @@ const EngineersList: FC<engineersListProps> = ({}) => {
           if (
             res.user.role === "admin" ||
             res.user.role === "super-admin" ||
+            res.user.role === "user" ||
             res.user.role === "hr"
           ) {
             setUser(res.user);

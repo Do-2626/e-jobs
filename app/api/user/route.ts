@@ -17,6 +17,7 @@ export const GET = async (req: NextRequest) => {
       throw new Error("Unauthorized");
     }
     if (
+      user.role !== "user" &&
       user.role !== "hr" &&
       user.role !== "admin" &&
       user.role !== "super-admin"
