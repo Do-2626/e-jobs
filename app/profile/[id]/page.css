@@ -1,0 +1,13 @@
+.show{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(var(--radius) - 2px);
+    border-width: 1px;
+    border-color: hsl(var(--input));
+    background-color: hsl(var(--background));
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.125rem;
+    margin-right: 0.5rem;
+}
