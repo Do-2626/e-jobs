@@ -60,11 +60,11 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
                   parentClassName="  "
                 />
 
-                <TextWrapper
+                {/* <TextWrapper
                   title="Email"
                   value={user.email}
                   parentClassName="  "
-                />
+                /> */}
                 <TextWrapper
                   title="Gender"
                   value={
