@@ -5,10 +5,11 @@ import { userType } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { FC, use, useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Search from "@/components/ui/search";
 
-interface engineersListProps {}
+interface engineersListProps { }
 
-const EngineersList: FC<engineersListProps> = ({}) => {
+const EngineersList: FC<engineersListProps> = ({ }) => {
   const router = useRouter();
   const [user, setUser] = useState<userType | null>(null);
 
@@ -40,22 +41,28 @@ const EngineersList: FC<engineersListProps> = ({}) => {
     user && (
       <div className="sm:container  m-5 my-40 py-6 bg-gradient-44 rounded-2xl">
         <Tabs defaultValue="users" className=" ">
-          <TabsList className=" shadow-lg bg-transparent text-white ">
-            <TabsTrigger className="rounded-lg" value="users">
-              Engineers
-            </TabsTrigger>
+          <TabsList className="flex justify-between bg-transparent text-white ">
+            <div className="shadow-lg">
+              <TabsTrigger className="rounded-lg" value="users">
+                Engineers
+              </TabsTrigger>
 
-            {user.role === "super-admin" || user.role === "admin" ? (
-              <TabsTrigger className="rounded-lg" value="recruiters">
-                Recruiters
-              </TabsTrigger>
-            ) : null}
-            {user.role === "super-admin" && (
-              <TabsTrigger className="rounded-lg" value="admins">
-                Admins
-              </TabsTrigger>
-            )}
+              {user.role === "super-admin" || user.role === "admin" ? (
+                <TabsTrigger className="rounded-lg" value="recruiters">
+                  Recruiters
+                </TabsTrigger>
+              ) : null}
+              {user.role === "super-admin" && (
+                <TabsTrigger className="rounded-lg" value="admins">
+                  Admins
+                </TabsTrigger>
+              )}
+            </div>
+            <div className="place-self-end shadow-lg">
+              <Search />
+            </div>
           </TabsList>
+
           <TabsContent value="users">
             <div className="p-4 sm:p-10 text-white ">
               <h1 className="text-2xl "> Engineers</h1>
