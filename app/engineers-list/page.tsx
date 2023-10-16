@@ -37,30 +37,37 @@ const EngineersList: FC<engineersListProps> = ({ }) => {
         console.log("error on fetch Users !", err);
       });
   }, [router]);
+  const [search, setSearch] = useState(<Search />);
+  const handelClick = (object: any) => {
+    const a = (object.target.getAttribute("data-state"))
+    const b = (object.target.firstChild.nodeValue);
+    (a == "active" && b == "Engineers") ? setSearch(<Search />) : setSearch(<></>);
+  };
   return (
     user && (
       <div className="sm:container  m-5 my-40 py-6 bg-gradient-44 rounded-2xl">
         <Tabs defaultValue="users" className=" ">
           <TabsList className="flex justify-between bg-transparent text-white ">
             <div className="shadow-lg">
-              <TabsTrigger className="rounded-lg" value="users">
+              <TabsTrigger className="rounded-lg" value="users" onClick={handelClick}>
                 Engineers
               </TabsTrigger>
 
               {user.role === "super-admin" || user.role === "admin" ? (
-                <TabsTrigger className="rounded-lg" value="recruiters">
+                <TabsTrigger className="rounded-lg" value="recruiters" onClick={handelClick}>
                   Recruiters
                 </TabsTrigger>
               ) : null}
               {user.role === "super-admin" && (
-                <TabsTrigger className="rounded-lg" value="admins">
+                <TabsTrigger className="rounded-lg" value="admins" onClick={handelClick}>
                   Admins
                 </TabsTrigger>
               )}
             </div>
-            <div className="place-self-end shadow-lg">
-              <Search />
-            </div>
+            {user.role !== "user" && (
+              <div>
+                {search}
+              </div>)}
           </TabsList>
 
           <TabsContent value="users">
