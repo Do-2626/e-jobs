@@ -1,6 +1,6 @@
 import SidBarLogoWrapper from "@/components/home/logos/SidBarLogoWrapper";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className=" w-full sm:p-4 h-full ">
       <div className="grid grid-cols-1 lg:grid-cols-3">

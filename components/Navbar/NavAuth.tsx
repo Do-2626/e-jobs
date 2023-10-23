@@ -16,7 +16,7 @@ const NavAuth: FC<NavAuthProps> = ({ }) => {
   useEffect(() => {
     getUserData()
       .then((res) => {
-        console.log({ res });
+        // console.log({ res });
         if (res?.success && res?.user) {
           toast.success("Welcome " + res.user.fullName);
           // router.push("/");
@@ -89,6 +89,12 @@ const NavAuth: FC<NavAuthProps> = ({ }) => {
             href={`/engineers-list`}
           >
             Resumes-List
+          </Link>
+          <Link
+            className="bg-gradient-44 py-2 px-4 text-white mx-2 border border-white rounded-3xl"
+            href={`/jobs`}
+          >
+            jobs
           </Link>
 
           <Link
