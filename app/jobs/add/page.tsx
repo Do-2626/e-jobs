@@ -1,3 +1,4 @@
+// import AddJobForm from "@/components/addJobForm";
 import AddJobForm from "@/components/addJobForm";
 
 const page = () => {
