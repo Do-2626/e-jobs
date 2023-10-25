@@ -2,7 +2,7 @@
 
 // import RemoveButton from "@/components/RemoveButton";
 import RemoveButton from "./RemoveButton";
-import EdieButton from "../EdieButton";
+import EdieButton from "./EdieButton";
 
 
 const JobCard = (props: any) => {
