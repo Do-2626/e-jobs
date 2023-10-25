@@ -5,7 +5,7 @@ import EditJobForm from '@/components/job-list/EditJobForm'
 
 const getJobById = async (id: any) => {
   try {
-    const res = await fetch(`/api/jobs/${id}`, {
+    const res = await fetch(`https://e-jobs02.netlify.app/api/jobs/${id}`, {
       "cache": "no-cache"
     });
 
