@@ -37,6 +37,8 @@ const resumeSchema = new mongoose.Schema(
     resumeLink: { type: String },
     license: { type: Array, default: [] },
     deleted: { type: Boolean, default: false },
+    views: { type: String },
+    likes: { type: String },
   },
   {
     timestamps: true,
