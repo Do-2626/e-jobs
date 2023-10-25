@@ -1,6 +1,7 @@
 "use client";
 import JobCard from "@/components/job-list/JobCard";
-import { getUserData, getJobData } from "@/lib/clientUltils/auth";
+import { getUserData } from "@/lib/clientUltils/auth";
+import { getJobData } from "@/lib/jobUltils/auth";
 import { userType } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";

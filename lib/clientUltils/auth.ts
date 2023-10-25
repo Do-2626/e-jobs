@@ -8,16 +8,6 @@ export const getUserData = async () => {
     return null;
   }
 };
-export const getJobData = async () => {
-  try {
-    const res = await fetch("/api/jobs");
-    if (!res.ok) throw new Error("Failed to fetch jobs");
-    const response = await res.json();
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
-};
 export const getUserDetails = async (id: string) => {
   try {
     const res = await fetch("/api/user/" + id);
