@@ -6,7 +6,7 @@ import { HiOutlineTrash } from 'react-icons/hi'
 function RemoveButton({ id }: any) {
     const router = useRouter();
     const removeJob = async () => {
-        const res = await fetch(`http://localhost:3000/api/jobs/${id}`, {
+        const res = await fetch(`/api/jobs/${id}`, {
             method: "DELETE",
         });
         if (res.ok) {

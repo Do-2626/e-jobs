@@ -10,7 +10,7 @@ export const getUserData = async () => {
 };
 export const getJobData = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/jobs");
+    const res = await fetch("/api/jobs");
     if (!res.ok) throw new Error("Failed to fetch jobs");
     const response = await res.json();
     return response;

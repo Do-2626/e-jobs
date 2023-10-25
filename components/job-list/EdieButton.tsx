@@ -5,7 +5,7 @@ function EdieButton({ id }: any) {
     console.log(id)
     return (
         <div>
-            <Link href={`http://localhost:3000/jobs/${id}`}>
+            <Link href={`/jobs/${id}`}>
                 <HiPencilAlt />
             </Link>
         </div>

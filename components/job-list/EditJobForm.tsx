@@ -11,7 +11,7 @@ function EditJobForm({ job }: any) {
     const handileSubmit = async (e: any) => {
         e.preventDefault()
         try {
-            const res = await fetch(`http://localhost:3000/api/jobs/${job._id}`, {
+            const res = await fetch(`/api/jobs/${job._id}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json'
