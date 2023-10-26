@@ -14,7 +14,7 @@ let all_users: any;
     })
 )
 
-function search() {
+function Search() {
     const [userList, setUserList] = useState([]);
 
     const hanelInput = (e: any) => {
@@ -73,4 +73,4 @@ function search() {
     )
 }
 
-export default search
+export default Search
