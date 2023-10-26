@@ -70,7 +70,7 @@ function Search() {
                             {
                                 userList.map(
                                     (user: any) => (
-                                        <li>
+                                        <li key={user?._id}>
                                             {user?.email}
                                         </li>
                                     ))
