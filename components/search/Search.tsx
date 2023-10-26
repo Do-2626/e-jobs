@@ -63,8 +63,8 @@ function Search() {
             </div>
             <>
                 {(userList.length > 0) ? (
-                    <div className='absolute p-2  rounded-xl text-slate-950 bg-[#f0f3ffdb]'>
-                        <ul className=''>{userList.map((user) => (<li> {user.email}</li>))}</ul>
+                    <div className='absolute p-2 m-auto rounded-xl text-slate-950 bg-[#f0f3ffdb]'>
+                        <ul className=''>{userList.map((user) => (<li key={user._id} > {user.email}</li>))}</ul>
                     </div>
                 ) : (null)
                 }
