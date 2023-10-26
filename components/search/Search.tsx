@@ -10,8 +10,8 @@ import { any } from 'zod';
 
 let all_users: any;
 (getAllUser()
-    .then((users) => {
-        all_users = users.users
+    .then((res) => {
+        all_users = res?.users
     })
 )
 

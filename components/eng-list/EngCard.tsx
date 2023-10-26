@@ -24,7 +24,7 @@ const EngCard: FC<EngCardProps> = ({
     if (!window.confirm("Are you sure?")) return;
     try {
       if (!window.confirm("Are you sure?")) return;
-      const res = await fetch(`/api/user/${eng._id}`, { method: "DELETE" });
+      const res = await fetch(`https://e-jobs02.netlify.app/api/user/${eng._id}`, { method: "DELETE" });
       const data = await res.json();
       if (data.success) {
         setFallBack(!fallBack);
@@ -40,7 +40,7 @@ const EngCard: FC<EngCardProps> = ({
   const handleUpdateUser = async (updatedData: updateUser) => {
     if (!window.confirm("Are you sure?")) return;
     try {
-      const res = await fetch(`/api/user/${eng._id}`, {
+      const res = await fetch(`https://e-jobs02.netlify.app/api/user/${eng._id}`, {
         method: "PUT",
         body: JSON.stringify(updatedData),
       });
