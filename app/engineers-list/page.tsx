@@ -5,7 +5,9 @@ import { userType } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { FC, use, useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Search from "@/components/ui/search";
+// import Search from "@/components/ui/search";
+import Search from "@/components/search/Search";
+
 
 interface engineersListProps { }
 
@@ -13,9 +15,14 @@ const EngineersList: FC<engineersListProps> = ({ }) => {
   const router = useRouter();
   const [user, setUser] = useState<userType | null>(null);
 
+
+
+  // getAllUser()
+
   useEffect(() => {
     getUserData()
       .then((res) => {
+        // console.log(res);
         if (res?.success && res?.user) {
           if (
             res.user.role === "admin" ||
@@ -66,12 +73,13 @@ const EngineersList: FC<engineersListProps> = ({ }) => {
             </div>
             {user.role !== "user" && (
               <div>
-                {search}
+                <Search />
               </div>)}
           </TabsList>
 
           <TabsContent value="users">
             <div className="p-4 sm:p-10 text-white ">
+              {search}
               <h1 className="text-2xl "> Engineers</h1>
               <EngList user={user} url="/api/user?role=user" />
             </div>
