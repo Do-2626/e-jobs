@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import './search.css'
 import { getAllUser } from "@/lib/clientUltils/auth";
+import { any } from 'zod';
 
 
 
@@ -24,6 +25,7 @@ function Search() {
         } else {
             let user_selected = all_users.filter((user: any) => (user.email.startsWith(v)))
             setUserList(user_selected)
+            // console.log(user_selected)
         }
     }
 
@@ -64,12 +66,21 @@ function Search() {
             <>
                 {(userList.length > 0) ? (
                     <div className='absolute p-2 m-auto rounded-xl text-slate-950 bg-[#f0f3ffdb]'>
-                        <ul className=''>{userList.map((user) => (<li key={user._id} > {user.email}</li>))}</ul>
+                        <ul>
+                            {
+                                userList.map(
+                                    (user: any) => (
+                                        <li>
+                                            {user?.email}
+                                        </li>
+                                    ))
+                            }
+                        </ul>
                     </div>
                 ) : (null)
                 }
             </>
-        </div>
+        </div >
     )
 }
 
