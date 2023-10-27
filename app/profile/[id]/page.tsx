@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { BiLike, BiShowAlt } from "react-icons/bi";
+import "./page.css";
 
 interface profileProps {
   params: {
@@ -31,7 +33,22 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
 
   return (
     <div className="container p-2   shadow-2xl ">
-      <div className="text-end m-2">
+      <div className="flex justify-end text-end m-2">
+        <Button
+          disabled={params.id == "self"}
+          variant={"outline"}
+          className="mr-2 text-lg">
+          <span>
+            <BiLike />
+          </span>
+        </Button>
+
+        <span className="show gap-3">
+          <span><BiShowAlt /></span>
+          <span>|</span>
+          <span>25</span>
+        </span>
+
         <Button
           disabled={params.id !== "self"}
           variant={"outline"}
@@ -60,11 +77,11 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
                   parentClassName="  "
                 />
 
-                <TextWrapper
+                {/* <TextWrapper
                   title="Email"
                   value={user.email}
                   parentClassName="  "
-                />
+                /> */}
                 <TextWrapper
                   title="Gender"
                   value={

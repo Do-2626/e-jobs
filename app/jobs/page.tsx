@@ -1,28 +1,34 @@
 "use client";
-import EngList from "@/components/eng-list/EngList";
+import JobCard from "@/components/job-list/JobCard";
 import { getUserData } from "@/lib/clientUltils/auth";
+import { getJobData } from "@/lib/jobUltils/auth";
 import { userType } from "@/types/types";
 import { useRouter } from "next/navigation";
-import { FC, use, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import Search from "@/components/ui/search";
-import Search from "@/components/search/Search";
-
+import Link from "next/link";
 
 interface engineersListProps { }
 
 const EngineersList: FC<engineersListProps> = ({ }) => {
-  const router = useRouter();
+  let router = useRouter();
   const [user, setUser] = useState<userType | null>(null);
+  const [job, setJob] = useState([]);
 
-
-
-  // getAllUser()
+  useEffect(() => {
+    getJobData()
+      .then((res) => {
+        setJob(res?.jobs);
+      })
+      .catch((err) => {
+        console.log("error on fetch Users !", err);
+      });
+    console.log(12)
+  }, [router]);
 
   useEffect(() => {
     getUserData()
       .then((res) => {
-        // console.log(res);
         if (res?.success && res?.user) {
           if (
             res.user.role === "admin" ||
@@ -44,64 +50,78 @@ const EngineersList: FC<engineersListProps> = ({ }) => {
         console.log("error on fetch Users !", err);
       });
   }, [router]);
-  const [search, setSearch] = useState(<Search />);
-  const handelClick = (object: any) => {
-    const a = (object.target.getAttribute("data-state"))
-    const b = (object.target.firstChild.nodeValue);
-    (a == "active" && b == "Engineers") ? setSearch(<Search />) : setSearch(<></>);
-  };
+
   return (
-    user && (
+    user && job && (
       <div className="sm:container  m-5 my-40 py-6 bg-gradient-44 rounded-2xl">
         <Tabs defaultValue="users" className=" ">
           <TabsList className="flex justify-between bg-transparent text-white ">
             <div className="shadow-lg">
-              <TabsTrigger className="rounded-lg" value="users" onClick={handelClick}>
-                Engineers
+              <TabsTrigger className="rounded-lg" value="users" >
+                Jobs
               </TabsTrigger>
 
               {user.role === "super-admin" || user.role === "admin" ? (
-                <TabsTrigger className="rounded-lg" value="recruiters" onClick={handelClick}>
-                  Recruiters
-                </TabsTrigger>
+                <Link href={`/jobs/add`}>
+                  <TabsTrigger className="rounded-lg" value="recruiters" >
+                    Add-Jobs
+                  </TabsTrigger>
+                </Link>
               ) : null}
-              {user.role === "super-admin" && (
-                <TabsTrigger className="rounded-lg" value="admins" onClick={handelClick}>
-                  Admins
-                </TabsTrigger>
-              )}
             </div>
-            {user.role !== "user" && (
-              <div>
-                <Search />
-              </div>)}
           </TabsList>
 
           <TabsContent value="users">
             <div className="p-4 sm:p-10 text-white ">
-              {/* {search} */}
-              <h1 className="text-2xl "> Engineers</h1>
-              <EngList user={user} url="/api/user?role=user" />
+              <h1 className="text-2xl "> Jobs ({job.length})</h1>
+              {
+                job?.length > 0 ? (
+                  job.map((j: any) => (
+                    <JobCard
+                      onClick={() => {
+                        router.push(`/jobs`);
+                      }}
+                      key={j._id}
+                      job={j}
+                    />
+                  ))
+                ) : (
+                  <div>No Jobs Found</div>
+                )
+              }
+              {/* {job?.length > 0 ? (
+                job.map((j: any) => (
+                  <JobCard
+                    key={j._id}
+                    job={j}
+                    onClick={() => {
+                      router = 1
+                      console.log(router)
+                    }}
+                  />
+                ))
+              ) : (
+                <div>No Engineers Found</div>
+              )} */}
             </div>
           </TabsContent>
 
           {user.role === "super-admin" || user.role === "admin" ? (
             <TabsContent value="recruiters">
               <div className="p-4 sm:p-10 text-white ">
-                <h1 className="text-2xl ">Recruiters</h1>
-                <EngList user={user} url="/api/user?role=hr" />
+                <h1 className="text-2xl ">...</h1>
               </div>
             </TabsContent>
           ) : null}
 
-          {user.role === "super-admin" && (
+          {/* {user.role === "super-admin" && (
             <TabsContent value="admins">
               <div className=" p-4 sm:p-10  ">
                 <h1 className="text-2xl text-white">Admins </h1>
-                <EngList user={user} url="/api/user?role=admin" />
+                <JobCard job={123} />
               </div>
             </TabsContent>
-          )}
+          )} */}
         </Tabs>
       </div>
     )

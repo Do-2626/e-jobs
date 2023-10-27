@@ -1,3 +1,13 @@
+export const getAllUser = async () => {
+  try {
+    const res = await fetch("/api/user");
+    const response = await res.json();
+    return response;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
 export const getUserData = async () => {
   try {
     const res = await fetch("/api/login");
@@ -24,3 +34,5 @@ export const logOut = async () => {
   const response = await res.json();
   return response;
 };
+
+
