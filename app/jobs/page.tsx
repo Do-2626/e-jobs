@@ -79,7 +79,7 @@ const EngineersList: FC<engineersListProps> = ({ }) => {
                   job.map((j: any) => (
                     <JobCard
                       onClick={() => {
-                        router.push(`/jobs`);
+                        router.push('/jobs');
                       }}
                       key={j._id}
                       job={j}

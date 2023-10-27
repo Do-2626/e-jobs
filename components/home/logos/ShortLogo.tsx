@@ -5,7 +5,7 @@ interface ShortLogoProps {}
 
 const ShortLogo: FC<ShortLogoProps> = ({}) => {
   return (
-    <div className="w-[200px] h-[200px] absolute top-[-20px] left-[-20px]  ">
+    <div className="w-[150px] h-[150px] top-[-15px] absolute sm:top-[-20px] left-[-20px] sm:w-[200px] sm:h-[200px]">
       <Link href={"/"} className="">
         <svg
           id="Layer_1"

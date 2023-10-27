@@ -63,7 +63,7 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
             <div className="p-2 border shadow-md">
               <div className="flex justify-center p-2">
                 <Image
-                  src={`/${user.role}-icon.png`}
+                  src={'/' + user.role + '-icon.png'}
                   width={175}
                   height={175}
                   alt="Eng-Icon"
