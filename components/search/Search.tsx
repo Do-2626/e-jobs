@@ -45,7 +45,7 @@ function Search() {
                 </div>
 
 
-                <>
+                {/* <>
                     <summary role="button" data-view-component="true" className="btn">
                         {" "}
                         Type: All
@@ -61,19 +61,22 @@ function Search() {
                             <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
                         </svg>
                     </summary>
-                </>
+                </> */}
             </div>
             <>
                 {(userList.length > 0) ? (
-                    <div className='absolute p-2 m-auto rounded-xl text-slate-950 bg-[#f0f3ffdb]'>
+                    <div className='absolute p-2 mx-auto mt-2 rounded-xl text-slate-950 bg-[#e3fdfedb]'>
                         <ul>
                             {
                                 userList.map(
                                     (user: any) => (
                                         <li key={user?._id}>
-                                            {user?.email}
+                                            <a href={"/profile/" + user?._id}>
+                                                {user?.email}
+                                            </a>
                                         </li>
-                                    ))
+                                    )
+                                )
                             }
                         </ul>
                     </div>

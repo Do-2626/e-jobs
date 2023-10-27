@@ -62,7 +62,7 @@ const EngineersList: FC<engineersListProps> = ({ }) => {
               </TabsTrigger>
 
               {user.role === "super-admin" || user.role === "admin" ? (
-                <Link href={`/jobs/add`}>
+                <Link href={'/jobs/add'}>
                   <TabsTrigger className="rounded-lg" value="recruiters" >
                     Add-Jobs
                   </TabsTrigger>
