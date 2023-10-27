@@ -58,7 +58,7 @@ const EngCard: FC<EngCardProps> = ({
   return (
     <div className=" grid grid-cols-5 md:grid-cols-10  border-b-2 my-2  text-white">
       <div className="col-span-5 md:col-span-3">
-        <div className="flex">
+        <div className="flex items-start">
           <Image
             src={`/${icon}-icon.png`}
             width={50}
