@@ -30,23 +30,50 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
       }
     });
   }, [params.id]);
+  console.log(user)
+
+  {/* ال لايك */ }
+  let count = false;
+  const like = (e: any) => {
+    const likeButtonStyle = window.document.querySelector("#likeButton")?.classList
+    count ? count = !count : count = true
+    if (count) {
+      likeButtonStyle?.add("bg-[#0071c5]", "text-gray-100")
+      likeButtonStyle?.remove("hover:bg-[#e6e6eb]", "hover:text-[#fff]")
+    } else {
+      likeButtonStyle?.remove("bg-[#0071c5]", "text-gray-100")
+      likeButtonStyle?.add("hover:bg-[#e6e6eb]")
+    }
+  }
+
+
+  {/* عدد المشاهدات */ }
+  const show = (e: any) => {
+    e.target.innerText = (parseInt(e.target.innerText) + 1)
+  }
+  setTimeout((() => { console.log(123) }), 5000)
+
 
   return (
-    <div className="container p-2   shadow-2xl ">
+    <div className="container p-2 shadow-2xl ">
       <div className="flex justify-end text-end m-2">
+        {/* زر ال لايك */}
         <Button
+          id="likeButton"
+          onClick={like}
           disabled={params.id == "self"}
           variant={"outline"}
-          className="mr-2 text-lg">
+          className="mr-2 text-lg hover:bg-[#e6e6eb]">
+          {/* // className="mr-2 text-lg bg-gray-600 text-gray-100"> */}
           <span>
             <BiLike />
           </span>
         </Button>
-
+        {/* اظهار عدد المشاهدات */}
         <span className="show gap-3">
           <span><BiShowAlt /></span>
           <span>|</span>
-          <span>25</span>
+          <span onClick={show} >25</span>
         </span>
 
         <Button
