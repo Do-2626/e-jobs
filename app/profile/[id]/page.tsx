@@ -38,8 +38,8 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
     const likeButtonStyle = window.document.querySelector("#likeButton")?.classList
     count ? count = !count : count = true
     if (count) {
-      likeButtonStyle?.add("bg-[#0071c5]", "text-gray-100")
       likeButtonStyle?.remove("hover:bg-[#e6e6eb]", "hover:text-[#fff]")
+      likeButtonStyle?.add("bg-[#0071c5]", "text-gray-100")
     } else {
       likeButtonStyle?.remove("bg-[#0071c5]", "text-gray-100")
       likeButtonStyle?.add("hover:bg-[#e6e6eb]")
