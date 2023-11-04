@@ -1,6 +1,6 @@
 export const getAllUser = async () => {
   try {
-    const res = await fetch("https://e-jobs02.netlify.app/api/user");
+    const res = await fetch("/api/user");
     const response = await res.json();
     return response;
   } catch (error) {
@@ -20,7 +20,7 @@ export const getUserData = async () => {
 };
 export const getUserDetails = async (id: string) => {
   try {
-    const res = await fetch(`https://e-jobs02.netlify.app/api/user/${id}`);
+    const res = await fetch(`/api/user/${id}`);
     // const res = await fetch("/api/user/" + id);
     const response = await res.json();
     return response;
@@ -31,7 +31,7 @@ export const getUserDetails = async (id: string) => {
 };
 
 export const logOut = async () => {
-  const res = await fetch("https://e-jobs02.netlify.app/api/login", { method: "DELETE" });
+  const res = await fetch("/api/login", { method: "DELETE" });
   const response = await res.json();
   return response;
 };

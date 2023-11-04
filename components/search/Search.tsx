@@ -71,7 +71,7 @@ function Search() {
                                 userList.map(
                                     (user: any) => (
                                         <li key={user?._id}>
-                                            <a href={"https://e-jobs02.netlify.app/profile/" + user?._id}>
+                                            <a href={"/profile/" + user?._id}>
                                                 {user?.email}
                                             </a>
                                         </li>
