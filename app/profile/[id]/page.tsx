@@ -17,13 +17,13 @@ interface profileProps {
 }
 
 const ProfileDetails: FC<profileProps> = ({ params }) => {
+  console.log(params.id)
   const [user, setUser] = useState<
     (userAndResumeSchemaType & { role: string }) | null
   >(null);
 
   useEffect(() => {
     getUserDetails(params.id).then((res) => {
-      console.log(params.id)
       if (res?.success && res?.body) {
         setUser(res.body);
       } else {
