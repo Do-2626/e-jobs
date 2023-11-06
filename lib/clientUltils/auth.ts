@@ -18,6 +18,9 @@ export const getUserData = async () => {
     return null;
   }
 };
+
+// https://e-jobs02.netlify.app/api/user/6512933051039eed4d8d6357
+// https://e-jobs02.netlify.app/profile/6512933051039eed4d8d6357
 export const getUserDetails = async (id: string) => {
   try {
     const res = await fetch(`/api/user/${id}`);
