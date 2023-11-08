@@ -21,7 +21,7 @@ const Profile: FC<profileProps> = ({}) => {
         router.push("/user/login");
       }
     });
-  }, []);
+  }, [router]);
   if (!user) {
     return (
       <div>
