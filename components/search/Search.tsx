@@ -73,12 +73,9 @@ function Search() {
                                 userList.map(
                                     (user: any) => (
                                         <li key={user?._id}>
-                                            {/* <a href={"/profile/" + user?._id}>
-                                                {user?.email}
-                                            </a> */}
                                             <Link href={`/profile/${user?._id}`}>
                                                 {/* {user?.email} */}
-                                                <p className="font-bold">{user?.fullName}</p>
+                                                <p className="font-bold">{user?.email}</p>
                                                 {/* <p>{eng?.email}</p> */}
                                             </Link>
                                         </li>
