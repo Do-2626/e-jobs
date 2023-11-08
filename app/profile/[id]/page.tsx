@@ -37,10 +37,11 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
   {/* ال لايك */ }
   let count = false;
   const like = (e: any) => {
+    // document.querySelector("#likeButton")
     const likeButtonStyle = window.document.querySelector("#likeButton")?.classList
     count ? count = !count : count = true
     if (count) {
-      likeButtonStyle?.remove("hover:bg-[#e6e6eb]", "hover:text-[#fff]")
+      likeButtonStyle?.remove("hover:bg-[#e6e6eb]", "hover:text-[#fff]", "bg-background")
       // text-[#4044ff] text-[larger]
       likeButtonStyle?.add("bg-[#0071c5]", "text-gray-100")
     } else {
@@ -69,7 +70,7 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
         {/* زر ال لايك */}
         <Button
           id="likeButton"
-          // onClick={like}
+          onClick={like}
           disabled={params.id == "self"}
           variant={"outline"}
           className="mr-2 text-lg hover:bg-[#e6e6eb]">
