@@ -5,6 +5,8 @@ import { useState } from 'react';
 import './search.css'
 import { getAllUser } from "@/lib/clientUltils/auth";
 import { any } from 'zod';
+import Link from "next/link";
+
 
 
 
@@ -71,9 +73,14 @@ function Search() {
                                 userList.map(
                                     (user: any) => (
                                         <li key={user?._id}>
-                                            <a href={"/profile/" + user?._id}>
+                                            {/* <a href={"/profile/" + user?._id}>
                                                 {user?.email}
-                                            </a>
+                                            </a> */}
+                                            <Link href={`/profile/${user?._id}`}>
+                                                {/* {user?.email} */}
+                                                <p className="font-bold">{user?.fullName}</p>
+                                                {/* <p>{eng?.email}</p> */}
+                                            </Link>
                                         </li>
                                     )
                                 )
