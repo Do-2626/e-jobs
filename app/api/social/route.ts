@@ -3,9 +3,9 @@ import { connectToDB } from "@/DB/utils/connect";
 import { NextResponse } from "next/server";
 
 export async function POST(request: any) {
-  const { views, likes } = await request.json();
+  const { uidProfile, views, likes } = await request.json();
   await connectToDB();
-  await Social.create({ views, likes });
+  await Social.create({ uidProfile, react: { views, likes } });
   return NextResponse.json({ message: "social added" }, { status: 201 });
 }
 

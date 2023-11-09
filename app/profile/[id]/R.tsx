@@ -22,7 +22,6 @@ const R: FC<profileProps> = ({ params }) => {
 
     useEffect(() => {
         getUserDetails(params.id).then((res) => {
-            console.log(res)
             if (res?.success && res?.body) {
                 setUser(res.body);
             } else {

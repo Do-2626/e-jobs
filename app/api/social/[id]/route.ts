@@ -17,6 +17,30 @@ import { NextResponse } from "next/server";
 //   await Job.findByIdAndUpdate(id, { title, description });
 //   return NextResponse.json({ message: "Job updated" }, { status: 200 });
 // }
+
+
+
+(
+// const update = {
+//   $push: {
+//     "react.views": "65289e7b3fd85a392180cde3"
+//   }
+// };
+
+// const query = {
+//   _id: "654d4df838599c53b389f5c1"
+// };
+
+// socialCollection.updateOne(query, update, (err, result) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+
+//   console.log("Document updated:", result);
+// });
+)
+
 // export async function GET(request: any, { params }: any) {
 //   const { id } = params;
 //   await connectToDB();

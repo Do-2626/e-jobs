@@ -1,16 +1,19 @@
 import mongoose from "mongoose";
+// import { any } from "zod";
 
 const socialSchema = new mongoose.Schema(
   {
-    idProfile: String,
-    views: [],
-    likes: [],
+    uidProfile: String,
+    react: {
+      views: [],
+      likes: [],
+    }
   },
   {
     timestamps: true,
   }
 );
 
-const Social = mongoose.models.social || mongoose.model("social", socialSchema);
+const Social1 = mongoose.models.Social1 || mongoose.model("Social1", socialSchema);
 
-export default Social;
+export default Social1;
