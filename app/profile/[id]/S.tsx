@@ -15,10 +15,7 @@ interface profileProps {
     params: {
         id: string;
     };
-    react: {
-        likes: [];
-        views: [];
-    }
+    react:any
 }
 const S: FC<profileProps> = ({ params, react }) => {
     const [statLike, setStatLike] = useState(false)
