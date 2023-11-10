@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 import "./page.css";
 import R from "./R";
 import S from "./S";
-import { getSocialData } from "@/lib/socialUltils/auth";
+import { getSocialData, postSocialData } from "@/lib/socialUltils/auth";
 import toast from "react-hot-toast";
 
 // interface profileProps {
@@ -19,7 +19,7 @@ interface profileProps {
 
 
 const ProfileDetails: FC<profileProps> = ({ params }) => {
-  const [statLike, setStatLike] = useState(false);
+
   const [socialReact, setSocialReact] = useState();
   // <userType | null>(null)
 
@@ -31,10 +31,19 @@ const ProfileDetails: FC<profileProps> = ({ params }) => {
     });
   }, [params.id]);
 
+
+
+  // POST
+  // console.log("start creat social")
+ 
+
+
+
   return (
     <div className="container p-2 shadow-2xl ">
       {/* header */}
       <S react={socialReact} params={params} />
+
       {/* informasion */}
       <R params={params} />
     </div>

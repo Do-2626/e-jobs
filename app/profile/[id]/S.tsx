@@ -4,6 +4,7 @@ import { userAndResumeSchemaType } from "@/ZodSchmeas/resume";
 import TextWrapper from "@/components/TextWrapper";
 import { Button } from "@/components/ui/button";
 import { getUserDetails } from "@/lib/clientUltils/auth";
+import { postSocialData } from "@/lib/socialUltils/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
@@ -18,7 +19,24 @@ interface profileProps {
     react: any
 }
 const S: FC<profileProps> = ({ params, react }) => {
+
     const [statLike, setStatLike] = useState(false)
+    const [l, setl] = useState(react ? react.likes.length : 0)
+    {
+        !react
+        ? postSocialData({ uidProfile: params.id, views: [], likes: [] })
+        : null
+    }
+    const statLikeTrue = () => {
+        setStatLike(true)
+        setl(l + 1)
+
+    }
+    const statLikeFalse = () => {
+        setStatLike(false)
+        setl(l - 1)
+    }
+
     return (
         <div>
             <div className="flex justify-end text-end m-2">
@@ -26,14 +44,18 @@ const S: FC<profileProps> = ({ params, react }) => {
                 {/* زر ال لايك */}
                 <Button
                     id="likeButton"
-                    onClick={() => { statLike == true ? (setStatLike(false)) : (setStatLike(true)) }}
+                    onClick={() => {
+                        statLike == false
+                            ? statLikeTrue()
+                            : statLikeFalse()
+                    }}
                     disabled={params.id == "self"}
                     variant={"outline"}
                     className="mr-2 text-lg hover:bg-[#e6e6eb] like gap-3">
                     {statLike ? (<span className="text-blue-600"><BiSolidLike /></span>) : (<BiLike />)}
                     <span>|</span>
-                    <span>
-                        {react ? react.likes.length : 0}
+                    <span id="l">
+                        {l}
                     </span>
                 </Button>
 
