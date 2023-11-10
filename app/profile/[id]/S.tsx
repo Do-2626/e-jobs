@@ -4,7 +4,7 @@ import { userAndResumeSchemaType } from "@/ZodSchmeas/resume";
 import TextWrapper from "@/components/TextWrapper";
 import { Button } from "@/components/ui/button";
 import { getUserDetails } from "@/lib/clientUltils/auth";
-import { postSocialData } from "@/lib/socialUltils/auth";
+import { addViews, postSocialData } from "@/lib/socialUltils/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
@@ -22,15 +22,15 @@ const S: FC<profileProps> = ({ params, react }) => {
 
     const [statLike, setStatLike] = useState(false)
     const [l, setl] = useState(react ? react.likes.length : 0)
-    {
-        !react
-        ? postSocialData({ uidProfile: params.id, views: [], likes: [] })
-        : null
-    }
+
+    // اضافة مشاهدة
+    setTimeout(() => { addViews(params.id) }, 3000)
+
+
     const statLikeTrue = () => {
         setStatLike(true)
         setl(l + 1)
-
+        addlike
     }
     const statLikeFalse = () => {
         setStatLike(false)

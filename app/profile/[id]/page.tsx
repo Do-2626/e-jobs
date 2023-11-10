@@ -3,14 +3,9 @@ import { FC, useEffect, useState } from "react";
 import "./page.css";
 import R from "./R";
 import S from "./S";
-import { getSocialData, postSocialData } from "@/lib/socialUltils/auth";
+import { get1social, getSocialData, postSocialData } from "@/lib/socialUltils/auth";
 import toast from "react-hot-toast";
 
-// interface profileProps {
-//   params: {
-//     id: string;
-//   };
-// }
 interface profileProps {
   params: {
     id: string;
@@ -21,21 +16,19 @@ interface profileProps {
 const ProfileDetails: FC<profileProps> = ({ params }) => {
 
   const [socialReact, setSocialReact] = useState();
-  // <userType | null>(null)
 
   useEffect(() => {
     getSocialData().then((res) => {
-      res.social.map((so: any) => {
-        so.uidProfile == params.id ? setSocialReact(so.react) : null;
-      });
+      get1social(params.id).then((res) => {
+        if (!res.social) {
+          postSocialData({ uidProfile: params.id, views: [], likes: [] })
+        }
+        console.log(res)
+        setSocialReact(res.social.react)
+      })
     });
   }, [params.id]);
 
-
-
-  // POST
-  // console.log("start creat social")
- 
 
 
 

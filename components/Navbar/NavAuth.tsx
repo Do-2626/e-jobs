@@ -7,6 +7,7 @@ import Link from "next/link";
 import { userType } from "@/types/types";
 import { ThreeDots } from "react-loader-spinner";
 import toast from "react-hot-toast";
+import { save_id_user } from "@/lib/socialUltils/auth";
 interface NavAuthProps { }
 
 const NavAuth: FC<NavAuthProps> = ({ }) => {
@@ -20,6 +21,8 @@ const NavAuth: FC<NavAuthProps> = ({ }) => {
         if (res?.success && res?.user) {
           toast.success("Welcome " + res.user.fullName);
           // router.push("/");
+          // console.log(res.user._id)
+          save_id_user(res.user._id)
           setUser(res.user);
         } else {
           console.log("err");
@@ -27,6 +30,8 @@ const NavAuth: FC<NavAuthProps> = ({ }) => {
         }
       })
       .catch((err) => { });
+
+
   }, [callBack, router]);
   const handleLogout = async () => {
     const res = await logOut();

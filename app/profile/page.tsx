@@ -1,15 +1,16 @@
 "use client";
 import ProfileForm from "@/components/ProfileForm";
 import { getUserDetails } from "@/lib/clientUltils/auth";
+
 import { userDetailsType } from "@/types/types";
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Triangle } from "react-loader-spinner";
 
-interface profileProps {}
+interface profileProps { }
 
-const Profile: FC<profileProps> = ({}) => {
+const Profile: FC<profileProps> = ({ }) => {
   const router = useRouter();
   const [user, setUser] = useState<userDetailsType | null>(null);
   useEffect(() => {
@@ -21,6 +22,7 @@ const Profile: FC<profileProps> = ({}) => {
         router.push("/user/login");
       }
     });
+
   }, [router]);
   if (!user) {
     return (
@@ -38,6 +40,7 @@ const Profile: FC<profileProps> = ({}) => {
       </div>
     );
   }
+
   return (
     <div>
       <ProfileForm user={user} />
