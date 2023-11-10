@@ -15,7 +15,7 @@ interface profileProps {
     params: {
         id: string;
     };
-    react:any
+    react: any
 }
 const S: FC<profileProps> = ({ params, react }) => {
     const [statLike, setStatLike] = useState(false)
@@ -33,7 +33,7 @@ const S: FC<profileProps> = ({ params, react }) => {
                     {statLike ? (<span className="text-blue-600"><BiSolidLike /></span>) : (<BiLike />)}
                     <span>|</span>
                     <span>
-                        {typeof (react.likes?.length) == "undefined" ? 0 : react.likes.length}
+                        {react ? react.likes.length : 0}
                     </span>
                 </Button>
 
@@ -44,7 +44,7 @@ const S: FC<profileProps> = ({ params, react }) => {
                     <span
                     // onClick={show}
                     >
-                        {typeof (react.views?.length) == "undefined" ? 0 : react.views.length}
+                        {react ? react.views.length : 0}
                     </span>
                 </span>
 
