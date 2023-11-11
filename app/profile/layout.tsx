@@ -20,7 +20,7 @@ const ProfileLayout: FC<profileLayoutProps> = ({ children }) => {
         router.push("/user/login");
       }
     });
-  }, [router]);
+  }, []);
 
   if (!user) {
     return (

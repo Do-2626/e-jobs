@@ -40,7 +40,7 @@ export const get1social = async (id: string) => {
 
 export const addViews = async (id: string) => {
   try {
-    const res = await fetch(`/api/social/${id}/add/${id_user}`);
+    const res = await fetch(`/api/social/${id}/views/${id_user}`);
     const response = await res.json();
     return response;
   } catch (error) {

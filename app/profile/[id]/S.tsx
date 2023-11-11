@@ -4,7 +4,7 @@ import { userAndResumeSchemaType } from "@/ZodSchmeas/resume";
 import TextWrapper from "@/components/TextWrapper";
 import { Button } from "@/components/ui/button";
 import { getUserDetails } from "@/lib/clientUltils/auth";
-import { addViews, postSocialData } from "@/lib/socialUltils/auth";
+import { addLike, addViews, postSocialData } from "@/lib/socialUltils/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
@@ -30,7 +30,7 @@ const S: FC<profileProps> = ({ params, react }) => {
     const statLikeTrue = () => {
         setStatLike(true)
         setl(l + 1)
-        addlike
+        addLike(params.id)
     }
     const statLikeFalse = () => {
         setStatLike(false)

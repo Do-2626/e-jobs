@@ -24,7 +24,7 @@ const EngList: FC<EngListProps> = ({ user, url }: EngListProps) => {
     fetchEngList(url).then((res) => {
       setEngineers(res);
     });
-  }, [fallBack, url]);
+  }, [fallBack]);
 
   if (!engineers) return null;
 

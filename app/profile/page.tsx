@@ -23,7 +23,7 @@ const Profile: FC<profileProps> = ({ }) => {
       }
     });
 
-  }, [router]);
+  }, []);
   if (!user) {
     return (
       <div>
